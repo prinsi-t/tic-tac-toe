@@ -43,6 +43,17 @@ h1{
     color: #000;
 }
 
+.popup{
+    background-color: rgba(165, 164, 164, 0.3);
+    z-index: 1;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-top: -6em;
+}
+
 .reset{
     width: 12em;
     height: 3em;
@@ -52,4 +63,31 @@ h1{
     margin-top: 2em;
     font-weight: bold;
     font-size: 1em;
+    background-color: #000;
+    color: #fff;
+}
+
+.newBtn{
+    width: 12em;
+    height: 3em;
+    cursor: pointer;
+    border-radius: 1.2em;
+    border: none;
+    font-weight: bold;
+    font-size: 1em;
+    background-color: #000;
+    color: #fff;
+}
+
+#message{
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 3em;
+    margin-top: 5em;
+    color: #000;
+    opacity: 1;
+}
+
+.hide{
+    display: none;
 }

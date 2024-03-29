@@ -1,8 +1,10 @@
 let boxes = document.querySelectorAll('.box');
 let resetBtn = document.querySelector('.reset')
+let newBtn = document.querySelector('.newBtn');
+let msg = document.querySelector('#message')
+let popup = document.querySelector('.popup')
 
-
-let turnx = true;//playerX or player0
+let turnx = true;
 
 
 
@@ -19,7 +21,7 @@ boxes.forEach(element => {
       element.innerText = '0';
       element.disabled = true;
     }
-    checkWinner()
+    checkWinner();
   });
 });
 
@@ -36,11 +38,6 @@ let winningPatterns = [
 
 ];
 
-
-
-
-
-
 //check winner
 const checkWinner = () => {
   for(pattern of winningPatterns){
@@ -48,18 +45,53 @@ const checkWinner = () => {
     let val1 = boxes[pattern[0]].innerText;
     let val2 = boxes[pattern[1]].innerText;
     let val3 = boxes[pattern[2]].innerText;
+
+    if(val1 != '' && (val2 != '') & (val3 != '')){
+      if(val1 === val2 && val2 === val3){
+        //console.log('winner', val1);
+        winFunction();
+        
+      }
+      
+    }
   }
 }
 
-//restarting game
- /* resetBtn.addEventListener("click", () => {
-  turnx = 0;
-  enableButtons();
-}); */
+const winFunction = (element) => {
+  msg.innerText = `Congrats, ${element} won!`
+  popup.classList.remove('hide')
+  disabled();
+}
 
-/* restartBtn.addEventListener("click", () => {
-  count = 0;
+const disabled = () => {
+  for (let box of boxes){
+    box.disabled = true;
+  }
+}
+
+
+//restarting game
+ resetBtn.addEventListener("click", () => {
+  turnx = true;
   enableButtons();
-}); */
-//window.onload = enableButtons;
+  popup.classList.add('hide')
+});
+
+
+//new game button
+ newBtn.addEventListener("click", () => {
+  turnx = true;
+  enableButtons();
+  popup.classList.add('hide')
+});
+
+const enableButtons = () => {
+  for (let box of boxes){
+    box.disabled = false;
+    box.innerText = '';
+  }
+}
+
+
+
  
