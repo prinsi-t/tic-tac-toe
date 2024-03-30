@@ -38,6 +38,7 @@ let winningPatterns = [
 
 ];
 
+
 //check winner
 const checkWinner = () => {
   for(pattern of winningPatterns){
@@ -49,17 +50,33 @@ const checkWinner = () => {
     if(val1 != '' && (val2 != '') & (val3 != '')){
       if(val1 === val2 && val2 === val3){
         //console.log('winner', val1);
-        winFunction();
+        winFunction(element = val1);
         
-      }
+      }else{
+        let draw = true;
+        for(let box of boxes){
+          if(box.innerText === ''){
+            draw = false;
+            break;
+          }
+        }
+        if(draw){
+          drawFunction();
       
+        }
     }
   }
 }
-
+}
 const winFunction = (element) => {
   msg.innerText = `Congrats, ${element} won!`
   popup.classList.remove('hide')
+  disabled();
+}
+
+const drawFunction = () => {
+  msg.innerText = "It's a draw!";
+  popup.classList.remove('hide');
   disabled();
 }
 
@@ -75,7 +92,10 @@ const disabled = () => {
   turnx = true;
   enableButtons();
   popup.classList.add('hide')
+  
 });
+
+
 
 
 //new game button
@@ -91,6 +111,8 @@ const enableButtons = () => {
     box.innerText = '';
   }
 }
+
+
 
 
 
